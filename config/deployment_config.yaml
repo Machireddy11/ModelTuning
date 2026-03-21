@@ -1,0 +1,196 @@
+# Deployment Configuration for ViviansLlama
+# This file contains settings specific to model deployment and serving
+
+deployment:
+  # Model Registry Settings
+  model_registry:
+    model_name: "ViviansLlama"
+    model_version: "v1.0.0"
+    description: "LoRA fine-tuned Llama 90B model for fintech domain"
+    labels:
+      domain: "fintech"
+      model_type: "llama"
+      training_method: "lora"
+      specialization: "financial_analysis"
+    
+  # Endpoint Configuration
+  endpoint:
+    display_name: "vivians-llama-endpoint"
+    description: "Production endpoint for ViviansLlama fintech model"
+    network: ""  # Optional: VPC network for private endpoint
+    enable_access_logging: true
+    
+  # Compute Resources
+  compute:
+    machine_type: "n1-standard-8"
+    accelerator_type: "NVIDIA_TESLA_V100"
+    accelerator_count: 1
+    
+    # Alternative configurations for different use cases
+    alternatives:
+      # High performance configuration
+      high_performance:
+        machine_type: "n1-standard-16"
+        accelerator_type: "NVIDIA_TESLA_A100"
+        accelerator_count: 2
+      
+      # Cost-optimized configuration
+      cost_optimized:
+        machine_type: "n1-standard-4"
+        accelerator_type: "NVIDIA_TESLA_T4"
+        accelerator_count: 1
+      
+      # Development/testing configuration
+      development:
+        machine_type: "n1-standard-4"
+        accelerator_type: "NVIDIA_TESLA_T4"
+        accelerator_count: 1
+  
+  # Auto-scaling Configuration
+  autoscaling:
+    min_replica_count: 1
+    max_replica_count: 5
+    target_cpu_utilization: 70
+    target_accelerator_utilization: 80
+    
+  # Traffic Management
+  traffic:
+    traffic_split:
+      # Percentage of traffic to route to this deployment
+      # Useful for A/B testing or gradual rollout
+      current_version: 100
+      previous_version: 0
+    
+  # Health Checks
+  health_check:
+    initial_delay_seconds: 300
+    period_seconds: 60
+    timeout_seconds: 30
+    failure_threshold: 3
+    
+  # Prediction Settings
+  prediction:
+    max_prediction_timeout: 120  # seconds
+    batch_size: 1
+    max_concurrent_requests: 10
+    
+  # Model Serving Container
+  serving_container:
+    image_uri: "us-docker.pkg.dev/vertex-ai/prediction/pytorch-gpu.1-13:latest"
+    command: []
+    args: []
+    env_vars:
+      MODEL_NAME: "ViviansLlama"
+      PYTORCH_CUDA_ALLOC_CONF: "max_split_size_mb:512"
+    ports:
+      - container_port: 8080
+        protocol: "TCP"
+    
+  # Monitoring and Logging
+  monitoring:
+    enable_monitoring: true
+    enable_logging: true
+    log_level: "INFO"
+    
+    # Metrics to track
+    metrics:
+      - "prediction_latency"
+      - "prediction_count"
+      - "error_rate"
+      - "cpu_utilization"
+      - "memory_utilization"
+      - "gpu_utilization"
+    
+    # Alerting thresholds
+    alerts:
+      high_latency_threshold_ms: 5000
+      high_error_rate_threshold: 0.05
+      low_availability_threshold: 0.95
+      
+  # Security Settings
+  security:
+    enable_private_endpoint: false
+    allowed_service_accounts: []
+    encryption:
+      kms_key_name: ""  # Optional: Customer-managed encryption key
+    
+  # Cost Management
+  cost:
+    budget_alert_threshold: 1000  # USD per month
+    auto_shutdown_idle_minutes: 60
+    enable_spot_instances: false  # Use preemptible VMs for cost savings
+    
+# Google Cloud Storage Configuration
+storage:
+  bucket_name: ""  # Set from environment variable
+  model_artifacts_path: "models/ViviansLlama"
+  backup_path: "backups/ViviansLlama"
+  retention_days: 90
+  
+  # Storage class for different data types
+  storage_classes:
+    model_artifacts: "STANDARD"
+    backups: "NEARLINE"
+    logs: "COLDLINE"
+
+# Deployment Strategies
+strategies:
+  # Blue-Green Deployment
+  blue_green:
+    enabled: false
+    validation_period_minutes: 30
+    rollback_on_error: true
+    
+  # Canary Deployment
+  canary:
+    enabled: false
+    initial_traffic_percentage: 10
+    increment_percentage: 10
+    increment_interval_minutes: 15
+    
+  # Rolling Update
+  rolling:
+    enabled: true
+    max_surge: 1
+    max_unavailable: 0
+
+# Testing Configuration
+testing:
+  # Smoke tests to run after deployment
+  smoke_tests:
+    enabled: true
+    test_prompts:
+      - "What are the key factors in credit risk assessment?"
+      - "Explain the concept of portfolio diversification."
+      - "Identify potential fraud indicators in financial transactions."
+    expected_response_time_ms: 3000
+    
+  # Load testing
+  load_tests:
+    enabled: false
+    concurrent_users: 10
+    duration_minutes: 5
+    ramp_up_minutes: 1
+
+# Rollback Configuration
+rollback:
+  auto_rollback_enabled: true
+  rollback_conditions:
+    error_rate_threshold: 0.1
+    latency_threshold_ms: 10000
+    availability_threshold: 0.90
+  previous_version_retention_days: 7
+
+# Notification Settings
+notifications:
+  email:
+    enabled: false
+    recipients: []
+  slack:
+    enabled: false
+    webhook_url: ""
+  pagerduty:
+    enabled: false
+    integration_key: ""
+
+# Made with Bob

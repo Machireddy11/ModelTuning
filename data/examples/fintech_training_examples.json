@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "description": "Example fintech training data for LoRA fine-tuning",
+    "version": "1.0.0",
+    "domains": ["financial_analysis", "risk_assessment", "regulatory_compliance", "fraud_detection", "investment_advice", "market_analysis"],
+    "format": "instruction-input-output"
+  },
+  "examples": [
+    {
+      "instruction": "Analyze the credit risk of a loan applicant",
+      "input": "Applicant has a credit score of 720, annual income of $85,000, debt-to-income ratio of 28%, and 5 years of employment history.",
+      "output": "Based on the provided information, this applicant presents a moderate-to-low credit risk profile. The credit score of 720 is considered good, indicating responsible credit management. The debt-to-income ratio of 28% is within acceptable limits (typically below 36%). The stable employment history of 5 years demonstrates income stability. However, I would recommend verifying the applicant's payment history, current outstanding debts, and the purpose of the loan to make a comprehensive risk assessment.",
+      "category": "risk_assessment"
+    },
+    {
+      "instruction": "Explain the concept of diversification in investment portfolios",
+      "input": "",
+      "output": "Diversification is a risk management strategy that involves spreading investments across various financial instruments, industries, and other categories to reduce exposure to any single asset or risk. The principle behind diversification is that a portfolio of different kinds of investments will, on average, yield higher returns and pose a lower risk than any individual investment. This is because different assets often perform differently under the same market conditions. For example, when stocks decline, bonds might hold steady or increase in value. A well-diversified portfolio typically includes a mix of stocks, bonds, real estate, and other asset classes, balanced according to the investor's risk tolerance and investment goals.",
+      "category": "investment_advice"
+    },
+    {
+      "instruction": "Identify potential fraud indicators in a transaction",
+      "input": "Transaction details: $15,000 wire transfer to an overseas account, initiated at 2 AM, from a customer who typically makes transactions under $500, and the destination country is flagged as high-risk.",
+      "output": "This transaction exhibits several red flags for potential fraud: 1) Unusual transaction amount - significantly higher than the customer's typical pattern, 2) Suspicious timing - initiated during unusual hours (2 AM), 3) High-risk destination - transfer to a country with elevated fraud risk, 4) Transaction type - wire transfers, especially international ones, are commonly used in fraud schemes. I recommend immediate verification through: contacting the customer via verified phone number, implementing additional authentication measures, temporarily holding the transaction for review, and checking for any recent account compromise indicators such as password changes or new device logins.",
+      "category": "fraud_detection"
+    },
+    {
+      "instruction": "Summarize key requirements of the Dodd-Frank Act",
+      "input": "",
+      "output": "The Dodd-Frank Wall Street Reform and Consumer Protection Act, enacted in 2010, introduced comprehensive financial regulatory reforms. Key requirements include: 1) Volcker Rule - restricts banks from proprietary trading and limits investments in hedge funds and private equity, 2) Enhanced capital requirements - banks must maintain higher capital reserves, 3) Stress testing - large financial institutions must undergo regular stress tests, 4) Consumer Financial Protection Bureau (CFPB) - created to protect consumers from predatory lending practices, 5) Derivatives regulation - requires standardized derivatives to be traded on exchanges and cleared through clearinghouses, 6) Resolution authority - provides framework for orderly liquidation of failing financial institutions, 7) Whistleblower provisions - protects and incentivizes reporting of securities violations.",
+      "category": "regulatory_compliance"
+    },
+    {
+      "instruction": "Calculate the compound annual growth rate (CAGR)",
+      "input": "Initial investment: $10,000, Final value: $18,500, Time period: 5 years",
+      "output": "To calculate the Compound Annual Growth Rate (CAGR), we use the formula: CAGR = (Ending Value / Beginning Value)^(1/Number of Years) - 1. Plugging in the values: CAGR = ($18,500 / $10,000)^(1/5) - 1 = (1.85)^0.2 - 1 = 1.1309 - 1 = 0.1309 or 13.09%. This means the investment grew at an average annual rate of 13.09% over the 5-year period. CAGR is useful for comparing investment performance over time as it smooths out volatility and provides a single growth rate that represents the investment's performance.",
+      "category": "financial_analysis"
+    },
+    {
+      "instruction": "Assess the market risk of a technology stock portfolio",
+      "input": "Portfolio consists of 60% large-cap tech stocks, 30% mid-cap tech stocks, and 10% tech ETFs. Beta of portfolio is 1.4, and the market has been volatile with VIX at 28.",
+      "output": "This portfolio exhibits elevated market risk due to several factors: 1) High concentration in technology sector (100%) creates sector-specific risk, 2) Portfolio beta of 1.4 indicates 40% more volatility than the overall market, 3) Current VIX level of 28 suggests heightened market uncertainty (normal range is 12-20), 4) Heavy weighting in individual stocks (90%) versus diversified ETFs increases idiosyncratic risk. Recommendations: Consider diversifying across sectors, reduce beta exposure by including defensive stocks or bonds, increase allocation to diversified ETFs, implement hedging strategies such as protective puts, and establish stop-loss orders to limit downside risk.",
+      "category": "risk_assessment"
+    },
+    {
+      "instruction": "Explain Basel III capital requirements",
+      "input": "",
+      "output": "Basel III is an international regulatory framework that strengthens bank capital requirements. Key components include: 1) Common Equity Tier 1 (CET1) ratio - minimum 4.5% of risk-weighted assets, 2) Tier 1 capital ratio - minimum 6% of risk-weighted assets, 3) Total capital ratio - minimum 8% of risk-weighted assets, 4) Capital conservation buffer - additional 2.5% of CET1, 5) Countercyclical buffer - 0-2.5% depending on credit conditions, 6) Leverage ratio - minimum 3% of total exposure, 7) Liquidity Coverage Ratio (LCR) - ensures banks hold sufficient high-quality liquid assets to survive 30-day stress scenario, 8) Net Stable Funding Ratio (NSFR) - promotes longer-term structural funding stability. These requirements aim to improve the banking sector's ability to absorb shocks and reduce systemic risk.",
+      "category": "regulatory_compliance"
+    },
+    {
+      "instruction": "Analyze a company's financial health using key ratios",
+      "input": "Company financials: Current ratio 2.1, Quick ratio 1.5, Debt-to-equity ratio 0.6, Return on equity 18%, Operating margin 22%, Interest coverage ratio 8.5",
+      "output": "The company demonstrates strong financial health across multiple metrics: 1) Liquidity - Current ratio of 2.1 and quick ratio of 1.5 indicate excellent short-term liquidity and ability to meet obligations, 2) Leverage - Debt-to-equity ratio of 0.6 shows conservative use of debt financing, 3) Profitability - ROE of 18% exceeds typical market returns, indicating efficient use of shareholder equity, 4) Operating efficiency - 22% operating margin suggests strong operational performance and pricing power, 5) Debt servicing - Interest coverage ratio of 8.5 demonstrates comfortable ability to service debt obligations. Overall assessment: This company exhibits financial stability, strong profitability, and low financial risk, making it an attractive investment candidate.",
+      "category": "financial_analysis"
+    },
+    {
+      "instruction": "Recommend portfolio allocation for a conservative investor",
+      "input": "Investor profile: Age 55, retirement in 10 years, risk tolerance: low, investment goal: capital preservation with modest growth, current portfolio value: $500,000",
+      "output": "For a conservative investor approaching retirement, I recommend the following allocation: 1) Bonds (50%) - Mix of investment-grade corporate bonds and government bonds for stability and income, 2) Large-cap dividend stocks (25%) - Established companies with consistent dividend payments, 3) Real Estate Investment Trusts (10%) - For diversification and income generation, 4) Cash and cash equivalents (10%) - For liquidity and emergency needs, 5) International bonds (5%) - For geographic diversification. This 65/35 fixed income to equity ratio aligns with the investor's low risk tolerance and capital preservation goals. As retirement approaches, gradually shift toward more conservative allocations. Consider tax-advantaged accounts and implement a systematic rebalancing strategy quarterly or semi-annually.",
+      "category": "investment_advice"
+    },
+    {
+      "instruction": "Detect anomalies in credit card transaction patterns",
+      "input": "Customer's recent transactions: 15 purchases in different cities within 3 hours, average transaction $200, all at electronics stores, customer's typical pattern is 2-3 transactions per week averaging $50 at grocery stores and gas stations.",
+      "output": "This transaction pattern shows clear anomalies indicating potential fraud: 1) Geographic impossibility - 15 purchases in different cities within 3 hours is physically impossible, suggesting card cloning or data breach, 2) Transaction frequency spike - dramatic increase from 2-3 weekly to 15 in 3 hours, 3) Merchant category deviation - shift from everyday purchases (groceries, gas) to high-value electronics, 4) Transaction amount anomaly - $200 average versus typical $50. Immediate actions required: 1) Block the card immediately, 2) Contact customer through verified channels, 3) Review all transactions in the suspicious timeframe, 4) Issue new card with different number, 5) File fraud report, 6) Investigate for potential data breach at previously used merchants, 7) Monitor customer's other accounts for suspicious activity.",
+      "category": "fraud_detection"
+    },
+    {
+      "instruction": "Explain the impact of Federal Reserve interest rate changes on the economy",
+      "input": "The Federal Reserve just announced a 0.5% interest rate increase.",
+      "output": "A 0.5% (50 basis points) interest rate increase by the Federal Reserve has several economic impacts: 1) Borrowing costs - Loans become more expensive for consumers and businesses, potentially slowing spending and investment, 2) Savings rates - Higher returns on savings accounts and CDs, encouraging saving over spending, 3) Mortgage rates - Home loan rates typically increase, cooling housing market activity, 4) Stock market - Often experiences short-term volatility; higher rates can reduce corporate profits and make bonds more attractive, 5) Currency strength - Higher rates typically strengthen the dollar as foreign investors seek higher returns, 6) Inflation control - Primary goal is to reduce inflation by decreasing money supply and cooling economic activity, 7) Employment - May lead to slower job growth as businesses reduce expansion plans. This aggressive 50bp increase signals the Fed's commitment to fighting inflation, though it risks slowing economic growth.",
+      "category": "market_analysis"
+    },
+    {
+      "instruction": "Evaluate a startup's funding round valuation",
+      "input": "Startup details: Series B funding, $20M raised at $100M post-money valuation, 2x revenue growth year-over-year, $5M annual recurring revenue, 200% net dollar retention, operating in SaaS fintech space.",
+      "output": "Analysis of this Series B valuation: 1) Valuation multiple - $100M valuation on $5M ARR equals 20x revenue multiple, which is reasonable for high-growth SaaS companies, 2) Growth metrics - 2x YoY revenue growth is strong and justifies premium valuation, 3) Net dollar retention - 200% NDR is exceptional, indicating strong product-market fit and expansion revenue, 4) Market positioning - Fintech SaaS is a hot sector with strong investor interest, 5) Dilution - $20M raise at $100M post-money represents 20% dilution, which is typical for Series B. Assessment: The valuation appears fair given the strong growth metrics and retention. Key considerations: sustainability of growth rate, path to profitability, competitive landscape, and market size. The 20x multiple is justified if the company can maintain high growth and improve unit economics. Investors should verify customer concentration, churn rates, and CAC/LTV ratios before committing.",
+      "category": "financial_analysis"
+    },
+    {
+      "instruction": "Assess anti-money laundering (AML) compliance requirements",
+      "input": "Financial institution is expanding to offer international wire transfer services.",
+      "output": "For international wire transfer services, comprehensive AML compliance requires: 1) Customer Due Diligence (CDD) - Verify customer identity, understand business relationships, and assess risk profiles, 2) Enhanced Due Diligence (EDD) - For high-risk customers, politically exposed persons (PEPs), and high-value transactions, 3) Transaction monitoring - Implement automated systems to detect suspicious patterns, structuring, and unusual activity, 4) Sanctions screening - Check all parties against OFAC, UN, and other sanctions lists in real-time, 5) Suspicious Activity Reports (SARs) - File reports for transactions meeting threshold criteria, 6) Record keeping - Maintain transaction records for minimum 5 years, 7) Training - Regular AML training for all relevant staff, 8) Independent testing - Annual audit of AML program effectiveness, 9) Correspondent banking due diligence - Verify AML controls of partner banks, 10) Travel Rule compliance - Share originator and beneficiary information for transactions over $3,000. Implement robust KYC procedures and continuous monitoring systems.",
+      "category": "regulatory_compliance"
+    },
+    {
+      "instruction": "Analyze cryptocurrency investment risks",
+      "input": "Investor considering allocating 15% of portfolio to Bitcoin and Ethereum.",
+      "output": "Cryptocurrency investment carries significant risks that must be carefully considered: 1) Volatility risk - Crypto assets can experience 20-30% price swings in days, far exceeding traditional assets, 2) Regulatory risk - Evolving regulations could impact value and usability; potential for bans or restrictions, 3) Security risk - Exchange hacks, wallet vulnerabilities, and loss of private keys can result in total loss, 4) Liquidity risk - During market stress, ability to exit positions may be limited, 5) Technology risk - Smart contract bugs, blockchain forks, and protocol changes, 6) Market manipulation - Less regulated markets susceptible to pump-and-dump schemes, 7) Tax complexity - Complicated tax treatment and reporting requirements. For 15% allocation: This is aggressive for most investors. Recommendations: 1) Limit to 5-10% for moderate risk tolerance, 2) Use dollar-cost averaging to reduce timing risk, 3) Store assets in secure hardware wallets, 4) Diversify between Bitcoin and Ethereum, 5) Only invest amounts you can afford to lose, 6) Understand tax implications, 7) Consider crypto exposure through regulated investment vehicles like ETFs.",
+      "category": "risk_assessment"
+    },
+    {
+      "instruction": "Explain the concept of yield curve inversion and its implications",
+      "input": "",
+      "output": "A yield curve inversion occurs when short-term interest rates exceed long-term rates, creating a downward-sloping yield curve. Normal yield curves slope upward because investors demand higher returns for longer-term investments. Key implications: 1) Recession indicator - Inversions have preceded every U.S. recession since 1950, typically 12-18 months before economic contraction, 2) Banking profitability - Banks borrow short-term and lend long-term; inversions compress net interest margins, 3) Investment behavior - Signals investor pessimism about future economic growth, 4) Federal Reserve policy - Often results from aggressive rate hikes to combat inflation, 5) Credit conditions - Tightening credit as banks become more cautious. The most watched inversion is between 2-year and 10-year Treasury yields. However, inversions are not perfect predictors; timing and magnitude vary. Investors should consider inversions alongside other economic indicators like employment data, consumer spending, and manufacturing activity. During inversions, defensive positioning with quality bonds, dividend stocks, and reduced equity exposure may be prudent.",
+      "category": "market_analysis"
+    }
+  ]
+}

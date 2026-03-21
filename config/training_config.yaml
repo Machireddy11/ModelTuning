@@ -1,0 +1,96 @@
+# LoRA Fine-tuning Configuration for Llama 90B - Fintech Domain
+
+model:
+  name: "meta-llama/Llama-2-90b-hf"  # Update with actual model path from Google Model Garden
+  model_garden_endpoint: ""  # To be filled with Google Model Garden endpoint
+  custom_model_name: "ViviansLlama"
+  model_type: "llama"
+  
+# LoRA Configuration
+lora:
+  r: 16  # LoRA rank
+  lora_alpha: 32  # LoRA alpha parameter
+  target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+  lora_dropout: 0.05
+  bias: "none"
+  task_type: "CAUSAL_LM"
+
+# Quantization Configuration
+quantization:
+  load_in_4bit: true
+  bnb_4bit_compute_dtype: "float16"
+  bnb_4bit_quant_type: "nf4"
+  bnb_4bit_use_double_quant: true
+
+# Training Configuration
+training:
+  output_dir: "./models/vivians_llama_fintech"
+  num_train_epochs: 3
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 16
+  gradient_checkpointing: true
+  learning_rate: 2.0e-4
+  weight_decay: 0.01
+  warmup_ratio: 0.03
+  lr_scheduler_type: "cosine"
+  logging_steps: 10
+  save_steps: 100
+  eval_steps: 100
+  save_total_limit: 3
+  fp16: false
+  bf16: true
+  max_grad_norm: 0.3
+  max_steps: -1
+  group_by_length: true
+  report_to: ["wandb", "tensorboard"]
+
+# Data Configuration
+data:
+  train_data_path: "./data/processed/fintech_train.jsonl"
+  eval_data_path: "./data/processed/fintech_eval.jsonl"
+  max_seq_length: 2048
+  dataset_text_field: "text"
+  packing: false
+
+# Fintech Domain Specific
+fintech:
+  domains:
+    - "financial_analysis"
+    - "risk_assessment"
+    - "regulatory_compliance"
+    - "market_analysis"
+    - "investment_advice"
+    - "fraud_detection"
+  instruction_format: "alpaca"  # or "chatml", "vicuna"
+
+# Google Cloud Configuration
+gcp:
+  project_id: ""  # To be filled
+  region: "us-central1"
+  bucket_name: ""  # To be filled
+  model_registry_path: "gs://your-bucket/models/ViviansLlama"
+  
+# Monitoring
+monitoring:
+  wandb_project: "vivians-llama-fintech"
+  wandb_entity: ""  # To be filled
+  experiment_name: "llama90b-lora-fintech"
+
+# Deployment Configuration
+deployment:
+  endpoint_name: "vivians-llama-endpoint"
+  machine_type: "n1-standard-8"
+  accelerator_type: "NVIDIA_TESLA_V100"
+  accelerator_count: 1
+  min_replica_count: 1
+  max_replica_count: 3
+
+# Made with Bob
