@@ -1,4 +1,4 @@
-# ViviansLlama - LoRA Fine-tuned Llama 90B for Fintech Domain
+# Llama - LoRA Fine-tuned Llama 90B for Fintech Domain
 
 A comprehensive project for fine-tuning Meta's Llama 90B model using LoRA (Low-Rank Adaptation) for fintech domain applications, with integration to Google Model Garden and deployment to Google Cloud Model Registry.
 
